@@ -1,0 +1,29 @@
+<div class="container" *ngIf="product">
+
+    <!-- Portfolio Item Heading -->
+    <h1 class="my-4">{{product.name}}
+    </h1>
+  
+    <!-- Portfolio Item Row -->
+    <div class="row">
+  
+      <!-- <div class="col-md-5">
+        <img class="img-fluid" src="{{product.image}}" alt="">
+      </div> -->
+  
+      <div class="col-md-5">
+        <h3 class="my-3">Mô tả sản phẩm</h3>
+        <p>{{product.description}}</p>
+        <h3 class="my-3">Chi tiết</h3>
+        <ul>
+            <li>Giá: {{product.price}}</li>
+            <li>Giảm giá: {{product.discount_amount}}</li>
+        </ul>
+        <a routerLink="/products/edit/{{product.id}}" class="btn btn-sm btn-primary mr-1">Chỉnh sửa</a>
+      </div>
+  
+    </div>
+    <!-- /.row -->
+  
+  </div>
+  <!-- /.container -->

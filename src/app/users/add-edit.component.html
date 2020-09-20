@@ -1,0 +1,51 @@
+﻿<h1 *ngIf="isAddMode">Thêm người dùng</h1>
+<h1 *ngIf="!isAddMode">Chỉnh sửa người dùng</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+        <div class="form-group col">
+            <label for="firstName">Tên</label>
+            <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">Tên là bắt buộc</div>
+            </div>
+        </div>
+        <div class="form-group col">
+            <label for="email">Email</label>
+            <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email là bắt buộc</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col">
+            <label for="gender">Giới tính</label>
+            <select class="form-control" formControlName="gender" [ngClass]="{ 'is-invalid': submitted && f.gender.errors }" >
+                <option value='Male'>Nam</option>
+                <option value='Female'>Nữ</option>
+            </select>
+            <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
+                <div *ngIf="f.gender.errors.required">Giới tính là bắt buộc</div>
+            </div>
+        </div>
+        <div class="form-group col">
+            <label for="status">
+                Trạng thái
+            </label>
+            <select class="form-control" formControlName="status" [ngClass]="{ 'is-invalid': submitted && f.status.errors }" >
+                <option value='Inactive'>Chưa kích hoạt</option>
+                <option value='Active'>Kích hoạt</option>
+            </select>
+            <div *ngIf="submitted && f.status.errors" class="invalid-feedback">
+                <div *ngIf="f.status.errors.required">Trạng thái là bắt buộc</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Save
+        </button>
+        <a routerLink="/users" class="btn btn-link">Cancel</a>
+    </div>
+</form>

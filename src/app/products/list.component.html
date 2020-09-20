@@ -1,0 +1,53 @@
+﻿<h1>Quản lý sản phẩm</h1>
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Thêm sản phẩm</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 5%">#</th>
+            <th style="width: 30%">Tên</th>
+            <th style="width: 30%">Giá</th>
+            <th style="width: 30%">Trạng Thái</th>
+            <th style="width: 15%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products; let i = index">
+            <td>{{i}}</td>
+            <td><a routerLink="detail/{{product.id}}" >{{product.name}}</a></td>
+            <td>{{product.price}}</td>
+            <td>
+                <span class="" [ngClass]="{ 'text-success': product.status }">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check2-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
+                    <path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"></path>
+                  </svg>
+                </span>
+                {{product.status}}
+            </td>
+            <td style="white-space: nowrap">
+                <a routerLink="edit/{{product.id}}" class="btn btn-sm btn-primary mr-1">Sửa</a>&nbsp;
+                <button (click)="deleteProduct(product.id)" class="btn btn-sm btn-danger btn-delete-user" [disabled]="product.isDeleting">
+                    <span *ngIf="product.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!product.isDeleting">Xóa</span>
+                </button>
+            </td>
+        </tr>
+        <tr *ngIf="!products">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="5">
+                <div class="row justify-content-center">
+                    <button *ngIf="pagination.page < pagination.pages" (click)="loadMore()" class="btn btn-sm btn-info " [disabled]="pagination.page == pagination.pages">
+                        Xem thêm
+                    </button>
+                </div>
+                <!-- <pagination [pager]="pagination" (changePage)="onChangePage($event)"></pagination> -->
+            </td>
+        </tr>
+    </tfoot>
+</table>

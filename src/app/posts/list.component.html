@@ -1,0 +1,41 @@
+﻿<h1>Quản lý bài viết</h1>
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Thêm bài viết</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 5%">#</th>
+            <th style="width: 30%">Tiêu đề</th>
+            <th style="width: 15%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let post of posts; let i = index">
+            <td>{{i}}</td>
+            <td><a routerLink="view/{{post.id}}" >{{post.title}}</a></td>
+            <td style="white-space: nowrap; text-align: right;">
+                <a routerLink="edit/{{post.id}}" class="btn btn-sm btn-primary mr-1">Sửa</a> &nbsp;
+                <button (click)="deletePost(post.id)" class="btn btn-sm btn-danger btn-delete-user" [disabled]="post.isDeleting">
+                    <span *ngIf="post.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!post.isDeleting">Xóa</span>
+                </button>
+            </td>
+        </tr>
+        <tr *ngIf="!posts">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="5">
+                <div class="row justify-content-center">
+                    <button *ngIf="pagination.page < pagination.pages" (click)="loadMore()" class="btn btn-sm btn-info " [disabled]="pagination.page == pagination.pages">
+                        Xem thêm
+                    </button>
+                </div>
+                <!-- <pagination [pager]="pagination" (changePage)="onChangePage($event)"></pagination> -->
+            </td>
+        </tr>
+    </tfoot>
+</table>

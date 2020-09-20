@@ -1,0 +1,70 @@
+﻿<!-- nav -->
+<!-- <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="user">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+        <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active">Users</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+    </div>
+</nav> -->
+
+
+<div class="header">
+    <div class="container">
+        <div class="header-nav">
+            <nav class="navbar navbar-default">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                    <div class="logo">
+                        <h1><a class="navbar-brand" href="index.html"><label>N</label>hóm <label>6</label><span>Quản lý sản phẩm </span></a></h1>
+                    </div>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+                 <ul class="nav navbar-nav">
+                    <li class="hvr-sweep-to-bottom">
+                        <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Trang chủ</a>
+                    </li>
+                    <li class="hvr-sweep-to-bottom">
+                        <a class="nav-link" routerLink="/posts" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Bài viết</a>
+                    </li>
+                    <li class="hvr-sweep-to-bottom">
+                        <a class="nav-link" routerLink="/users" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Người dùng</a>
+                    </li>
+                    <li class="hvr-sweep-to-bottom">
+                        <a class="nav-link" routerLink="/products" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Sản phẩm</a>
+                    </li>
+                    
+                  </ul>
+                </div><!-- /.navbar-collapse -->
+            </nav>
+        </div>
+    </div>
+</div>
+
+<div class="app-container bg-light">
+    <alert></alert>
+    <main role="main">
+        <router-outlet></router-outlet>
+    </main>
+</div>
+<section class="footer">
+    <div class="container">
+        <!-- copyrights -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyrights">
+                    <p class="text-center"></p>
+                </div>
+            </div>
+        </div>
+        <!-- .copyrights -->
+
+    </div>
+</section>
